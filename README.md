@@ -16,6 +16,7 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
+- `api`: a [Hono](https://hono.dev/) API running on Cloudflare Workers; see its [README](./apps/api/README.md)
 - `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
 - `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
@@ -31,6 +32,18 @@ This Turborepo has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+
+### Shared dependency versions
+
+Shared versions of Next.js, React, React DOM, their type packages, Node.js types,
+ESLint, and TypeScript are managed in the default `catalog` in
+[pnpm-workspace.yaml](./pnpm-workspace.yaml). Apps, shared packages, and the root
+package reference these versions with `"catalog:"` in their dependency manifests.
+Internal packages continue to use `"workspace:*"`.
+
+To change a shared dependency version, edit its catalog entry and run
+`pnpm install` from the repository root to update
+[pnpm-lock.yaml](./pnpm-lock.yaml).
 
 ### Build
 
